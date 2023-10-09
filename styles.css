@@ -18,7 +18,7 @@ body{
     color:#403c33;
 }
 #sidebar-empty{ /*Used to just push canvas to center, since if we have sidebar of equal size on both sides of canvas, then it will be centered*/
-    width: 225px;
+    width: 235px;
 
 }
 #container{
@@ -34,7 +34,7 @@ body{
 }
 
 #sidebar{
-    margin-right: 25px;
+    margin-right: 35px;
     width: 200px;
     display:flex;
     flex-direction: column;
