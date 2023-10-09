@@ -17,7 +17,10 @@ body{
     font-weight: 500;
     color:#403c33;
 }
+#sidebar-empty{ /*Used to just push canvas to center, since if we have sidebar of equal size on both sides of canvas, then it will be centered*/
+    width: 225px;
 
+}
 #container{
     display:flex;
 }
