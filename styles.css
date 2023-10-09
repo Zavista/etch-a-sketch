@@ -1,5 +1,6 @@
 body{
     background-color: 	#faf8f2;
+    color:#403c33;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,8 +45,8 @@ button{
     font-size: 18px;
     font-weight: 250;
     background-color:#faf8f2;
-    border-radius: 8px;
     color:#403c33;
+    border-radius: 8px;
     border: 1px solid #403c33;
 }
 
@@ -75,6 +76,18 @@ since it doesn't work in HTML for color-picker
     border:none ;
 }
 
+
+#canvas-size{
+    margin-top: 10px;
+    width:100%;
+    text-align: center;
+}
+
+#canvas-size div{
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 500;
+}
 #canvas-slider{
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -100,7 +113,7 @@ since it doesn't work in HTML for color-picker
 }
 
 #footer{
-    background-color: #faf5ca;
+    background-color: #faf8f2;;
     width: 100%;
     gap: 10px;
     padding: 15px;
