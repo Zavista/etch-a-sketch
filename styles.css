@@ -25,12 +25,24 @@ body{
     display:flex;
 }
 
+
 #canvas{
     background-color: white;
     height: 500px;
     width: 500px;
+    border: 1px solid #a6a090;
+    padding:0;
+    margin:0;
+    display: flex;
+    flex-wrap: wrap; /*So that when we add the square divs, they will go onto the next line*/
+}
+
+
+.square{ /*Each individiual square inside #canvas will have this starting property*/
+    background-color: white;
+    border: 1px solid #a6a090; /*Remove the border later */
     box-sizing: border-box;
-    border: 1px solid #a6a090
+
 }
 
 #sidebar{
