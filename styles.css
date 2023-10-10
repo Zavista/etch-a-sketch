@@ -40,7 +40,7 @@ body{
 
 .square{ /*Each individiual square inside #canvas will have this starting property*/
     background-color: white;
-    border: 1px solid #a6a090; /*Remove the border later */
+    border: none; /*Remove the border later */
     box-sizing: border-box;
 
 }
