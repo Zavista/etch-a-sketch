@@ -1,6 +1,7 @@
 const canvas = document.querySelector("#canvas");
 let color ="black"; //starting color
 createCanvas(16); //This will be my starting canvas since the slider starts at 16x16
+updateSquares();
 
 
 function createCanvas(size){ 
@@ -19,13 +20,16 @@ function createCanvas(size){
     }
 }
 
-squares = document.querySelectorAll(".square"); //Selects all our created squares from createCanvas()
+function updateSquares(){ //Made this into a function so that each time we create a new canvas, we can call this to add events to the new squares
+    squares = document.querySelectorAll(".square"); //Selects all our created squares from createCanvas()
 squares.forEach(square => { //Adds an event listener to each square to change color when mouseover it
     square.addEventListener("mouseover", ()=> {
         square.style.backgroundColor = color;
     })
     
 });
+}
+
 
 //Adds an event to each .toggle-btn where when they are clicked, we remove all .active on the toggle-button
 //and add .active to the button that was clicked (event.target)
@@ -55,4 +59,12 @@ eraserBtn.addEventListener("click", () => {
 clearBtn = document.querySelector("#clear-btn");
 clearBtn.addEventListener("click", ()=>{
     squares.forEach(square => {square.style.backgroundColor = "white";}) //"erases" all the squares
+})
+
+canvasSlider = document.querySelector("#canvas-slider");
+canvasSlider.addEventListener("input", ()=>{
+    canvas.innerHTML=""; //basically removes all childNodes and makes it empty;
+    createCanvas(canvasSlider.value); //Creates new canvas
+    document.querySelector("#dimensions").textContent=`${canvasSlider.value} x ${canvasSlider.value}`; //updates dimensions
+    updateSquares(); //adds the events to the new canvas
 })
