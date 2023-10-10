@@ -65,6 +65,11 @@ button{
     border: 1px solid #403c33;
 }
 
+.active{ /*active button basically swaps the background and color*/
+    background-color:#403c33;
+    color:#faf8f2;
+}
+
 #color-picker{
     -webkit-appearance: none;
     -moz-appearance: none;

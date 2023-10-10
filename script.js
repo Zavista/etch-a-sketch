@@ -18,7 +18,6 @@ function createCanvas(size){
     }
 }
 
-
 squares = document.querySelectorAll(".square"); //Selects all our created squares from createCanvas()
 squares.forEach(square => { //Adds an event listener to each square to change color when mouseover it
     square.addEventListener("mouseover", ()=> {
@@ -26,3 +25,15 @@ squares.forEach(square => { //Adds an event listener to each square to change co
     })
     
 });
+
+//Adds an event to each .toggle-btn where when they are clicked, we remove all .active on the toggle-button
+//and add .active to the button that was clicked (event.target)
+//This is to only have 1 active togle button at once. 
+toggleBtns = document.querySelectorAll(".toggle-btn"); 
+toggleBtns.forEach(btn => { 
+    btn.addEventListener("click", (event)=> {
+        toggleBtns.forEach(btn => {btn.classList.remove("active")});
+        event.target.classList.add("active");})
+});
+
+
