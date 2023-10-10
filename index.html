@@ -11,6 +11,8 @@
 <body>
     <div id="title">Etch a Sketch</div>
     <div id="container">
+        <div id="sidebar-empty"></div> <!--Used to push canvas to the center-->
+        <div id="canvas"></div>
         <div id="sidebar">
             <input id="color-picker" type="color"> <!--Color Picker-->
             <button class="toggle-btn active" id ="color-btn">Color</button> <!--Color active at the start-->
@@ -21,10 +23,7 @@
                 <div id="dimensions">16 x 16</div>
                 <input type="range" min="1" max="64" value="16" id="canvas-slider"> <!--Slider Bar-->
             </div>
-
         </div>
-        <div id="canvas"></div>
-        <div id="sidebar-empty"></div> <!--Used to push canvas to the center-->
     </div>
 
     <div id="footer">

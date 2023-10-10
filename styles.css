@@ -46,7 +46,7 @@ body{
 }
 
 #sidebar{
-    margin-right: 35px;
+    margin-left: 35px;
     width: 200px;
     display:flex;
     flex-direction: column;
