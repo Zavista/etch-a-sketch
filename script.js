@@ -1,4 +1,5 @@
 const canvas = document.querySelector("#canvas");
+let color ="black"; //starting color
 createCanvas(16); //This will be my starting canvas since the slider starts at 16x16
 
 
@@ -21,7 +22,7 @@ function createCanvas(size){
 squares = document.querySelectorAll(".square"); //Selects all our created squares from createCanvas()
 squares.forEach(square => { //Adds an event listener to each square to change color when mouseover it
     square.addEventListener("mouseover", ()=> {
-        square.style.backgroundColor = "black";
+        square.style.backgroundColor = color;
     })
     
 });
@@ -36,4 +37,22 @@ toggleBtns.forEach(btn => {
         event.target.classList.add("active");})
 });
 
+colorPicker = document.querySelector("#color-picker");
+colorPicker.addEventListener("input", () => { //use input as the event so that we change color when a new color is inputted
+    color = colorPicker.value;
+})
 
+colorBtn = document.querySelector("#color-btn");
+colorBtn.addEventListener("click", () => {
+    color = colorPicker.value;
+})
+
+eraserBtn = document.querySelector("#eraser-btn");
+eraserBtn.addEventListener("click", () => {
+    color = "white"; //to "erase"
+})
+
+clearBtn = document.querySelector("#clear-btn");
+clearBtn.addEventListener("click", ()=>{
+    squares.forEach(square => {square.style.backgroundColor = "white";}) //"erases" all the squares
+})
