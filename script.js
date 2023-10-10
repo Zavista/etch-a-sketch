@@ -1,7 +1,7 @@
 const canvas = document.querySelector("#canvas");
 let color ="black"; //starting color
 createCanvas(16); //This will be my starting canvas since the slider starts at 16x16
-updateSquares();
+updateSquaresRegular();
 
 
 function createCanvas(size){ 
@@ -20,11 +20,21 @@ function createCanvas(size){
     }
 }
 
-function updateSquares(){ //Made this into a function so that each time we create a new canvas, we can call this to add events to the new squares
+function updateSquaresRegular(){ //Made this into a function so that each time we create a new canvas, we can call this to add events to the new squares
     squares = document.querySelectorAll(".square"); //Selects all our created squares from createCanvas()
     squares.forEach(square => { //Adds an event listener to each square to change color when mouseover it
     square.addEventListener("mouseover", ()=> {
         square.style.backgroundColor = color;
+    })
+    
+});
+}
+
+function updateSquaresRainbow(){ 
+    squares = document.querySelectorAll(".square"); 
+    squares.forEach(square => { 
+    square.addEventListener("mouseover", ()=> {
+        square.style.backgroundColor = randomColor(); //random hex color for each square when hovered
     })
     
 });
@@ -43,6 +53,9 @@ function randomColor(){
 toggleBtns = document.querySelectorAll(".toggle-btn"); 
 toggleBtns.forEach(btn => { 
     btn.addEventListener("click", (event)=> {
+        if (rainbowBtn.classList.contains("active")){
+            updateSquaresRegular(); //switches back to regular mode to prevent bug where rainbow persists after changing
+        }
         toggleBtns.forEach(btn => {btn.classList.remove("active")});
         event.target.classList.add("active");})
 });
@@ -72,14 +85,17 @@ canvasSlider.addEventListener("input", ()=>{
     canvas.innerHTML=""; //basically removes all childNodes and makes it empty;
     createCanvas(canvasSlider.value); //Creates new canvas
     document.querySelector("#dimensions").textContent=`${canvasSlider.value} x ${canvasSlider.value}`; //updates dimensions
-    updateSquares(); //adds the events to the new canvas
+
+    //resets the hover/pen
+    if (rainbowBtn.classList.contains("active")){
+        updateSquaresRainbow();
+    }
+    else{
+        updateSquaresRegular(); 
+    }
+    
 })
 
 //Changes the eventListener from changing square background to color to randomColor() which gives a random hex color
 rainbowBtn = document.querySelector("#rainbow-btn");
-rainbowBtn.addEventListener("click", ()=>{
-    squares.forEach(square => { 
-    square.addEventListener("mouseover", ()=> {
-            square.style.backgroundColor = randomColor();
-    })})
-})
+rainbowBtn.addEventListener("click", updateSquaresRainbow); //changes hover to random color
