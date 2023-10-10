@@ -22,7 +22,7 @@ function createCanvas(size){
 
 function updateSquares(){ //Made this into a function so that each time we create a new canvas, we can call this to add events to the new squares
     squares = document.querySelectorAll(".square"); //Selects all our created squares from createCanvas()
-squares.forEach(square => { //Adds an event listener to each square to change color when mouseover it
+    squares.forEach(square => { //Adds an event listener to each square to change color when mouseover it
     square.addEventListener("mouseover", ()=> {
         square.style.backgroundColor = color;
     })
@@ -30,6 +30,12 @@ squares.forEach(square => { //Adds an event listener to each square to change co
 });
 }
 
+function randomColor(){
+    let randomNumber = Math.floor(Math.random() * 4294967296); 
+    //random number from 0 to 4294967295
+    //Note that in base 16, this is every number from 0 to FFFFFF
+    return "#"+randomNumber.toString(16)//converts it to base16 in String
+}
 
 //Adds an event to each .toggle-btn where when they are clicked, we remove all .active on the toggle-button
 //and add .active to the button that was clicked (event.target)
@@ -67,4 +73,13 @@ canvasSlider.addEventListener("input", ()=>{
     createCanvas(canvasSlider.value); //Creates new canvas
     document.querySelector("#dimensions").textContent=`${canvasSlider.value} x ${canvasSlider.value}`; //updates dimensions
     updateSquares(); //adds the events to the new canvas
+})
+
+//Changes the eventListener from changing square background to color to randomColor() which gives a random hex color
+rainbowBtn = document.querySelector("#rainbow-btn");
+rainbowBtn.addEventListener("click", ()=>{
+    squares.forEach(square => { 
+    square.addEventListener("mouseover", ()=> {
+            square.style.backgroundColor = randomColor();
+    })})
 })
